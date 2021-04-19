@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTask2021.Views.TaskDetailPage"
+             xmlns:converters="clr-namespace:AppTask2021.Converters"
+             Title="Detalle de la tarea">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImageConverters"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Margin="20"
+                VerticalOptions="StartAndExpand">
+                <Label
+                    Text="Nombre de la tarea"/>
+                <Entry
+                    Text="{Binding TaskSelected.Name}"/>
+                <Label
+                    Text="Notas de la tarea"/>
+                <Entry
+                    Text="{Binding TaskSelected.Notes}"/>
+                <Label
+                    Text="Finalizada"/>
+                <Switch
+                    IsToggled="{Binding TaskSelected.Done}"/>
+                <Button
+                    Text="Tomar Foto"
+                    Command="{Binding TakePictureCommand}"/>
+                <Button
+                    Text="Seleccionar Foto"
+                    Command="{Binding SelectPictureCommand}"/>
+                <Image
+                    Source="{Binding ImageBase64, Converter = {StaticResource ImageConverters}}"
+                    WidthRequest="100"/>
+                <Button
+                    Text="Guardar"
+                    Command="{Binding SaveCommand}"/>
+                <Button
+                    Text="Eliminar"
+                    Command="{Binding DeleteCommand}"/>
+                <Button
+                    Text="Cancelar"
+                    Command="{Binding CancelCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
